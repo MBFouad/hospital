@@ -1,0 +1,127 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductTypes
+ *
+ * @ORM\Table(name="product_types")
+ * @ORM\Entity
+ */
+class ProductTypes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="product_type_code", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $productTypeCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="product_type_description", type="text", nullable=false)
+     */
+    private $productTypeDescription;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vat_rating", type="integer", nullable=false)
+     */
+    private $vatRating;
+
+    /**
+     * @var \ProductTypes
+     *
+     * @ORM\ManyToOne(targetEntity="ProductTypes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="parent_product_type_code", referencedColumnName="product_type_code")
+     * })
+     */
+    private $parentProductTypeCode;
+
+
+    /**
+     * Get productTypeCode
+     *
+     * @return integer 
+     */
+    public function getProductTypeCode()
+    {
+        return $this->productTypeCode;
+    }
+
+    /**
+     * Set productTypeDescription
+     *
+     * @param string $productTypeDescription
+     * @return ProductTypes
+     */
+    public function setProductTypeDescription($productTypeDescription)
+    {
+        $this->productTypeDescription = $productTypeDescription;
+    
+        return $this;
+    }
+
+    /**
+     * Get productTypeDescription
+     *
+     * @return string 
+     */
+    public function getProductTypeDescription()
+    {
+        return $this->productTypeDescription;
+    }
+
+    /**
+     * Set vatRating
+     *
+     * @param integer $vatRating
+     * @return ProductTypes
+     */
+    public function setVatRating($vatRating)
+    {
+        $this->vatRating = $vatRating;
+    
+        return $this;
+    }
+
+    /**
+     * Get vatRating
+     *
+     * @return integer 
+     */
+    public function getVatRating()
+    {
+        return $this->vatRating;
+    }
+
+    /**
+     * Set parentProductTypeCode
+     *
+     * @param \ProductTypes $parentProductTypeCode
+     * @return ProductTypes
+     */
+    public function setParentProductTypeCode(\ProductTypes $parentProductTypeCode = null)
+    {
+        $this->parentProductTypeCode = $parentProductTypeCode;
+    
+        return $this;
+    }
+
+    /**
+     * Get parentProductTypeCode
+     *
+     * @return \ProductTypes 
+     */
+    public function getParentProductTypeCode()
+    {
+        return $this->parentProductTypeCode;
+    }
+}

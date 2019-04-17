@@ -1,0 +1,9 @@
+{
+    "minimum-stability": "stable",
+    "require": {
+        "doctrine/orm": "2.3.*"
+    },
+        "autoload": {
+            "psr-0": {"": "./application/models/Entity/"}
+        }
+}

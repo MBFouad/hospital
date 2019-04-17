@@ -1,0 +1,127 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Invoices
+ *
+ * @ORM\Table(name="invoices")
+ * @ORM\Entity
+ */
+class Invoices
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="invoice_number", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $invoiceNumber;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="invoice_date", type="date", nullable=false)
+     */
+    private $invoiceDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="invoice_details", type="text", nullable=false)
+     */
+    private $invoiceDetails;
+
+    /**
+     * @var \Orders
+     *
+     * @ORM\ManyToOne(targetEntity="Orders")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="order_id", referencedColumnName="order_id")
+     * })
+     */
+    private $order;
+
+
+    /**
+     * Get invoiceNumber
+     *
+     * @return integer 
+     */
+    public function getInvoiceNumber()
+    {
+        return $this->invoiceNumber;
+    }
+
+    /**
+     * Set invoiceDate
+     *
+     * @param \DateTime $invoiceDate
+     * @return Invoices
+     */
+    public function setInvoiceDate($invoiceDate)
+    {
+        $this->invoiceDate = $invoiceDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get invoiceDate
+     *
+     * @return \DateTime 
+     */
+    public function getInvoiceDate()
+    {
+        return $this->invoiceDate;
+    }
+
+    /**
+     * Set invoiceDetails
+     *
+     * @param string $invoiceDetails
+     * @return Invoices
+     */
+    public function setInvoiceDetails($invoiceDetails)
+    {
+        $this->invoiceDetails = $invoiceDetails;
+    
+        return $this;
+    }
+
+    /**
+     * Get invoiceDetails
+     *
+     * @return string 
+     */
+    public function getInvoiceDetails()
+    {
+        return $this->invoiceDetails;
+    }
+
+    /**
+     * Set order
+     *
+     * @param \Orders $order
+     * @return Invoices
+     */
+    public function setOrder(\Orders $order = null)
+    {
+        $this->order = $order;
+    
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return \Orders 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+}

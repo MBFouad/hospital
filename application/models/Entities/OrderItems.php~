@@ -1,0 +1,160 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OrderItems
+ *
+ * @ORM\Table(name="order_items")
+ * @ORM\Entity
+ */
+class OrderItems
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order_item_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $orderItemId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="product_quantity", type="integer", nullable=false)
+     */
+    private $productQuantity;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="other_order_item_details", type="text", nullable=false)
+     */
+    private $otherOrderItemDetails;
+
+    /**
+     * @var \Orders
+     *
+     * @ORM\ManyToOne(targetEntity="Orders")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="order_id", referencedColumnName="order_id")
+     * })
+     */
+    private $order;
+
+    /**
+     * @var \Products
+     *
+     * @ORM\ManyToOne(targetEntity="Products")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_id", referencedColumnName="product_id")
+     * })
+     */
+    private $product;
+
+
+    /**
+     * Get orderItemId
+     *
+     * @return integer 
+     */
+    public function getOrderItemId()
+    {
+        return $this->orderItemId;
+    }
+
+    /**
+     * Set productQuantity
+     *
+     * @param integer $productQuantity
+     * @return OrderItems
+     */
+    public function setProductQuantity($productQuantity)
+    {
+        $this->productQuantity = $productQuantity;
+    
+        return $this;
+    }
+
+    /**
+     * Get productQuantity
+     *
+     * @return integer 
+     */
+    public function getProductQuantity()
+    {
+        return $this->productQuantity;
+    }
+
+    /**
+     * Set otherOrderItemDetails
+     *
+     * @param string $otherOrderItemDetails
+     * @return OrderItems
+     */
+    public function setOtherOrderItemDetails($otherOrderItemDetails)
+    {
+        $this->otherOrderItemDetails = $otherOrderItemDetails;
+    
+        return $this;
+    }
+
+    /**
+     * Get otherOrderItemDetails
+     *
+     * @return string 
+     */
+    public function getOtherOrderItemDetails()
+    {
+        return $this->otherOrderItemDetails;
+    }
+
+    /**
+     * Set order
+     *
+     * @param \Orders $order
+     * @return OrderItems
+     */
+    public function setOrder(\Orders $order = null)
+    {
+        $this->order = $order;
+    
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return \Orders 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Products $product
+     * @return OrderItems
+     */
+    public function setProduct(\Products $product = null)
+    {
+        $this->product = $product;
+    
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Products 
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+}

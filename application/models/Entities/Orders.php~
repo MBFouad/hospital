@@ -1,0 +1,124 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Orders
+ *
+ * @ORM\Table(name="orders")
+ * @ORM\Entity
+ */
+class Orders
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $orderId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="customer_id", type="integer", nullable=false)
+     */
+    private $customerId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="order_date", type="date", nullable=false)
+     */
+    private $orderDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="order_details", type="text", nullable=false)
+     */
+    private $orderDetails;
+
+
+    /**
+     * Get orderId
+     *
+     * @return integer 
+     */
+    public function getOrderId()
+    {
+        return $this->orderId;
+    }
+
+    /**
+     * Set customerId
+     *
+     * @param integer $customerId
+     * @return Orders
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->customerId = $customerId;
+    
+        return $this;
+    }
+
+    /**
+     * Get customerId
+     *
+     * @return integer 
+     */
+    public function getCustomerId()
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * Set orderDate
+     *
+     * @param \DateTime $orderDate
+     * @return Orders
+     */
+    public function setOrderDate($orderDate)
+    {
+        $this->orderDate = $orderDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get orderDate
+     *
+     * @return \DateTime 
+     */
+    public function getOrderDate()
+    {
+        return $this->orderDate;
+    }
+
+    /**
+     * Set orderDetails
+     *
+     * @param string $orderDetails
+     * @return Orders
+     */
+    public function setOrderDetails($orderDetails)
+    {
+        $this->orderDetails = $orderDetails;
+    
+        return $this;
+    }
+
+    /**
+     * Get orderDetails
+     *
+     * @return string 
+     */
+    public function getOrderDetails()
+    {
+        return $this->orderDetails;
+    }
+}

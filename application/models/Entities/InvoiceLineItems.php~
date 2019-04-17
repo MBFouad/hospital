@@ -1,0 +1,310 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * InvoiceLineItems
+ *
+ * @ORM\Table(name="invoice_line_items")
+ * @ORM\Entity
+ */
+class InvoiceLineItems
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="invoice_item_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $invoiceItemId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="product_title", type="string", length=50, nullable=false)
+     */
+    private $productTitle;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="product_quantity", type="integer", nullable=false)
+     */
+    private $productQuantity;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="product_price", type="float", nullable=false)
+     */
+    private $productPrice;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="derived_product_cost", type="float", nullable=false)
+     */
+    private $derivedProductCost;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="derived_vat_payable", type="float", nullable=false)
+     */
+    private $derivedVatPayable;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="derived_total_cost", type="float", nullable=false)
+     */
+    private $derivedTotalCost;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="other_line_item_details", type="text", nullable=false)
+     */
+    private $otherLineItemDetails;
+
+    /**
+     * @var \Invoices
+     *
+     * @ORM\ManyToOne(targetEntity="Invoices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="invoice_number", referencedColumnName="invoice_number")
+     * })
+     */
+    private $invoiceNumber;
+
+    /**
+     * @var \Products
+     *
+     * @ORM\ManyToOne(targetEntity="Products")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_id", referencedColumnName="product_id")
+     * })
+     */
+    private $product;
+
+
+    /**
+     * Get invoiceItemId
+     *
+     * @return integer 
+     */
+    public function getInvoiceItemId()
+    {
+        return $this->invoiceItemId;
+    }
+
+    /**
+     * Set productTitle
+     *
+     * @param string $productTitle
+     * @return InvoiceLineItems
+     */
+    public function setProductTitle($productTitle)
+    {
+        $this->productTitle = $productTitle;
+    
+        return $this;
+    }
+
+    /**
+     * Get productTitle
+     *
+     * @return string 
+     */
+    public function getProductTitle()
+    {
+        return $this->productTitle;
+    }
+
+    /**
+     * Set productQuantity
+     *
+     * @param integer $productQuantity
+     * @return InvoiceLineItems
+     */
+    public function setProductQuantity($productQuantity)
+    {
+        $this->productQuantity = $productQuantity;
+    
+        return $this;
+    }
+
+    /**
+     * Get productQuantity
+     *
+     * @return integer 
+     */
+    public function getProductQuantity()
+    {
+        return $this->productQuantity;
+    }
+
+    /**
+     * Set productPrice
+     *
+     * @param float $productPrice
+     * @return InvoiceLineItems
+     */
+    public function setProductPrice($productPrice)
+    {
+        $this->productPrice = $productPrice;
+    
+        return $this;
+    }
+
+    /**
+     * Get productPrice
+     *
+     * @return float 
+     */
+    public function getProductPrice()
+    {
+        return $this->productPrice;
+    }
+
+    /**
+     * Set derivedProductCost
+     *
+     * @param float $derivedProductCost
+     * @return InvoiceLineItems
+     */
+    public function setDerivedProductCost($derivedProductCost)
+    {
+        $this->derivedProductCost = $derivedProductCost;
+    
+        return $this;
+    }
+
+    /**
+     * Get derivedProductCost
+     *
+     * @return float 
+     */
+    public function getDerivedProductCost()
+    {
+        return $this->derivedProductCost;
+    }
+
+    /**
+     * Set derivedVatPayable
+     *
+     * @param float $derivedVatPayable
+     * @return InvoiceLineItems
+     */
+    public function setDerivedVatPayable($derivedVatPayable)
+    {
+        $this->derivedVatPayable = $derivedVatPayable;
+    
+        return $this;
+    }
+
+    /**
+     * Get derivedVatPayable
+     *
+     * @return float 
+     */
+    public function getDerivedVatPayable()
+    {
+        return $this->derivedVatPayable;
+    }
+
+    /**
+     * Set derivedTotalCost
+     *
+     * @param float $derivedTotalCost
+     * @return InvoiceLineItems
+     */
+    public function setDerivedTotalCost($derivedTotalCost)
+    {
+        $this->derivedTotalCost = $derivedTotalCost;
+    
+        return $this;
+    }
+
+    /**
+     * Get derivedTotalCost
+     *
+     * @return float 
+     */
+    public function getDerivedTotalCost()
+    {
+        return $this->derivedTotalCost;
+    }
+
+    /**
+     * Set otherLineItemDetails
+     *
+     * @param string $otherLineItemDetails
+     * @return InvoiceLineItems
+     */
+    public function setOtherLineItemDetails($otherLineItemDetails)
+    {
+        $this->otherLineItemDetails = $otherLineItemDetails;
+    
+        return $this;
+    }
+
+    /**
+     * Get otherLineItemDetails
+     *
+     * @return string 
+     */
+    public function getOtherLineItemDetails()
+    {
+        return $this->otherLineItemDetails;
+    }
+
+    /**
+     * Set invoiceNumber
+     *
+     * @param \Invoices $invoiceNumber
+     * @return InvoiceLineItems
+     */
+    public function setInvoiceNumber(\Invoices $invoiceNumber = null)
+    {
+        $this->invoiceNumber = $invoiceNumber;
+    
+        return $this;
+    }
+
+    /**
+     * Get invoiceNumber
+     *
+     * @return \Invoices 
+     */
+    public function getInvoiceNumber()
+    {
+        return $this->invoiceNumber;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Products $product
+     * @return InvoiceLineItems
+     */
+    public function setProduct(\Products $product = null)
+    {
+        $this->product = $product;
+    
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Products 
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+}
